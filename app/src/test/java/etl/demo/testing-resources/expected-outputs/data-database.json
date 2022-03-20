@@ -1,0 +1,93 @@
+[{
+    "device_id": "ABC",
+    "device_type": "cookie",
+    "country": "us",
+    "data_source":"factual",
+    "gender": {
+      "m": 2,
+      "f": 1
+    },
+    "age": {
+      "18-24": 2,
+      "25-34": 1,
+      "35-44": 1,
+      "45-54": 0,
+      "55-64": 0,
+      "65+": 0
+    },
+    "income": {}
+  },
+  {
+    "device_id": "ABC-02",
+    "device_type": "cookie",
+    "country": "vn",
+    "data_source":"factual",
+    "gender": {
+
+      "f": 1
+    },
+    "age": {
+      "18-24": 0,
+      "25-34": 0,
+      "35-44": 0,
+      "45-54": 0,
+      "55-64": 0,
+      "65+": 0
+    },
+    "income": {
+      "0-25": 2
+    }
+  },
+  {
+    "device_id": "ABC-03",
+    "device_type": "cookie",
+    "country": "n.a",
+    "data_source":"factual",
+    "gender": {},
+    "age": {
+      "65+": 1
+    },
+    "income": {
+      "25-50": 1
+    }
+  },
+  {
+    "device_id": "ABC-03",
+    "device_type": "cookie",
+    "country": "n.a",
+    "data_source":"oracle",
+    "gender": {},
+    "age": {
+    },
+    "income": {
+      "0-25": 1
+    }
+  },
+  {
+    "device_id": "ABC-04",
+    "device_type": "cookie",
+    "country": "be",
+    "data_source":"oracle",
+    "gender": {
+      "m": 1
+    },
+    "age": {
+      "18-24":2
+    },
+    "income": {
+    }
+  },
+  {
+    "device_id": "ABC-04",
+    "device_type": "cookie",
+    "country": "be",
+    "data_source":"knx_ai",
+    "gender": {
+    },
+    "age": {
+      "25-34":1
+    },
+    "income": {
+    }
+  }
+]

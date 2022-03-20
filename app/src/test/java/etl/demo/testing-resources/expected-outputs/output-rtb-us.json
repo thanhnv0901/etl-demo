@@ -1,0 +1,70 @@
+[{
+    "type": "demographic",
+    "match_source": "n.a",
+    "device_type": "cookie",
+    "country_code": "us",
+    "data": [{
+      "user_id": "ABC",
+      "cost": [{
+        "dmp_id": "knorex",
+        "dmp_name": "Knorex",
+        "model": "CPM",
+        "value": 0.0
+      }],
+      "age": {
+        "from": 18,
+        "to": 24
+      },
+      "gender": "M",
+      "income": null,
+      "data_source":"factual"
+    }]
+  },
+  {
+    "type": "demographic",
+    "match_source": "n.a",
+    "device_type": "cookie",
+    "country_code": "n.a",
+    "data": [{
+      "user_id": "ABC-03",
+      "cost": [{
+        "dmp_id": "knorex",
+        "dmp_name": "Knorex",
+        "model": "CPM",
+        "value": 0.0
+      }],
+      "age": {
+        "from": 65,
+        "to": 100
+      },
+      "gender": null,
+      "income": {
+        "from": 25,
+        "to": 50
+      },
+      "data_source":"factual"
+    }]
+  },
+  {
+    "type": "demographic",
+    "match_source": "n.a",
+    "device_type": "cookie",
+    "country_code": "n.a",
+    "data": [{
+      "user_id": "ABC-03",
+      "cost": [{
+        "dmp_id": "knorex",
+        "dmp_name": "Knorex",
+        "model": "CPM",
+        "value": 0.0
+      }],
+      "age": null,
+      "gender": null,
+      "income": {
+        "from": 0,
+        "to": 25
+      },
+      "data_source":"oracle"
+    }]
+  }
+]

@@ -1,0 +1,114 @@
+[{
+    "device_id": "ABC",
+    "device_type": "cookie",
+    "country": "us",
+    "data_source": "factual",
+    "attribute_type": "gender",
+    "attribute_value": "m"
+  },
+  {
+    "device_id": "ABC",
+    "device_type": "cookie",
+    "country": "us",
+    "data_source": "factual",
+    "attribute_type": "gender",
+    "attribute_value": "M"
+  },
+  {
+    "device_id": "ABC",
+    "device_type": "cookie",
+    "country": "us",
+    "data_source": "factual",
+    "attribute_type": "gender",
+    "attribute_value": "f"
+  },
+
+  {
+    "device_id": "ABC",
+    "device_type": "cookie",
+    "country": "us",
+    "data_source": "factual",
+    "attribute_type": "age",
+    "attribute_value": "18-24"
+  },
+  {
+    "device_id": "ABC",
+    "device_type": "cookie",
+    "country": "us",
+    "data_source": "factual",
+    "attribute_type": "age",
+    "attribute_value": "18-24"
+  },
+  {
+    "device_id": "ABC",
+    "device_type": "cookie",
+    "country": "us",
+    "data_source": "factual",
+    "attribute_type": "age",
+    "attribute_value": "25-34"
+  },
+  {
+    "device_id": "ABC",
+    "device_type": "cookie",
+    "country": "us",
+    "data_source": "factual",
+    "attribute_type": "age",
+    "attribute_value": "35-44"
+  },
+  {
+    "device_id": "ABC-02",
+    "device_type": "cookie",
+    "country": "vn",
+    "data_source": "factual",
+    "attribute_type": "gender",
+    "attribute_value": "f"
+  },
+  {
+    "device_id": "ABC-02",
+    "device_type": "cookie",
+    "country": "vn",
+    "data_source": "factual",
+    "attribute_type": "income",
+    "attribute_value": "0-25"
+  },
+  {
+    "device_id": "ABC-02",
+    "device_type": "cookie",
+    "country": "vn",
+    "data_source": "factual",
+    "attribute_type": "income",
+    "attribute_value": "0-25"
+  },
+  {
+    "device_id": "ABC-03",
+    "device_type": "cookie",
+    "country": null,
+    "data_source": "factual",
+    "attribute_type": "age",
+    "attribute_value": "65+"
+  },
+  {
+    "device_id": "ABC-03",
+    "device_type": "cookie",
+    "country": "n.a",
+    "data_source": "factual",
+    "attribute_type": "income",
+    "attribute_value": "25-50"
+  },
+  {
+    "device_id": "ABC-03",
+    "device_type": "cookie",
+    "country": "n.a",
+    "data_source": "oracle",
+    "attribute_type": "income",
+    "attribute_value": "0-25"
+  },
+  {
+    "device_id": "ABC-04",
+    "device_type": "cookie",
+    "country": "be",
+    "data_source": "knx_ai",
+    "attribute_type": "age",
+    "attribute_value": "25-34"
+  }
+]
