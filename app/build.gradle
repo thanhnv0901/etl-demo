@@ -65,4 +65,8 @@ if (project.hasProperty("dataflow-runner")) {
         runtimeOnly("org.apache.beam:beam-runners-google-cloud-dataflow-java:2.37.0")
     }
 }
+
+ext {
+    GOOGLE_APPLICATION_CREDENTIALS = "knorex-rtb-fba740906c31-test.json"
+}
   

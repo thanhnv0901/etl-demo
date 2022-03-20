@@ -3,6 +3,8 @@
  */
 package etl.demo;
 
+import java.io.File;
+
 import org.apache.beam.sdk.Pipeline;
 import org.apache.beam.sdk.io.gcp.pubsub.PubsubIO;
 import org.apache.beam.sdk.options.Default;
@@ -21,7 +23,6 @@ import org.apache.beam.sdk.values.TupleTagList;
 import org.joda.time.Duration;
 
 import etl.demo.configures.ConfigProperties;
-import etl.demo.constants.Constants;
 import etl.demo.dofn.CalculateMarkForUser;
 import etl.demo.dofn.ParseDataFromPubSub;
 import etl.demo.dofn.PrepareDataToPubSub;
@@ -48,10 +49,12 @@ public class App {
 
                 // Setup environment
                 ConfigProperties.setEnvironment(myOptions.getEnvironment());
+
+                // Set options for pipeline
                 myOptions.setStreaming(true);
                 myOptions.setTempLocation(ConfigProperties.getProperty(ConfigProperties.TEMP_LOCATION));
 
-                Pipeline myPipeline = Pipeline.create();
+                Pipeline myPipeline = Pipeline.create(myOptions);
 
                 PCollection<ProcessedRecord> userRecordColl = myPipeline
                                 .apply("Read messages from Pubsub", PubsubIO.readStrings()
