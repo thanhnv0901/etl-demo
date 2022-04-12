@@ -67,6 +67,7 @@ public class InfoDatabase {
     public Map<String, TypeDetail> getTypeDetail() {
         Map<String, TypeDetail> typeDetails = new HashMap<String, TypeDetail>();
 
+        // notice
         // Do something
         // notice
 
@@ -75,6 +76,7 @@ public class InfoDatabase {
 
     public String getRegion(String ID) {
 
+        // notice
         // Do something
         // notice
 

@@ -82,11 +82,13 @@ public class App {
                 PCollection<ProcessedRecord> otherUsers = pTuple.get(otherRegionTag);
 
                 // Send to Pubsub
-                asiaUsers.apply("Parse object to string", ParDo.of(new PrepareDataToPubSub())).apply("Send to Pubsub",
+                asiaUsers.apply("Parse object to string", ParDo.of(new PrepareDataToPubSub())).apply(
+                                "Send to Asia Pubsub",
                                 PubsubIO.writeStrings().to(ConfigProperties
                                                 .getProperty(ConfigProperties.PUBSUB_TOPIC_ASIA_OUTPUT)));
 
-                otherUsers.apply("Parse object to string", ParDo.of(new PrepareDataToPubSub())).apply("Send to Pubsub",
+                otherUsers.apply("Parse object to string", ParDo.of(new PrepareDataToPubSub())).apply(
+                                "Send to Other Pubsub",
                                 PubsubIO.writeStrings().to(ConfigProperties
                                                 .getProperty(ConfigProperties.PUBSUB_TOPIC_OTHER_OUTPUT)));
 

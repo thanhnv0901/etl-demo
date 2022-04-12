@@ -29,6 +29,13 @@ func (u *User) GetCurrentMark() int64 {
 	return u.totalScorePerMinute
 }
 
+// ResetMark ..
+func (u *User) ResetMark() {
+	u.WLock.Lock()
+	defer u.WLock.Unlock()
+	u.totalScorePerMinute = 0
+}
+
 // PlayGame ..
 func (u *User) PlayGame(ctx context.Context) {
 
@@ -39,15 +46,15 @@ func (u *User) PlayGame(ctx context.Context) {
 		mark = utils.RandomMark()
 		u.AddMark(mark)
 
-		// var record = UserRecord{
-		// 	ID:        u.ID,
-		// 	Mark:      mark,
-		// 	TypeGame:  typeGame,
-		// 	TimeStamp: 0,
-		// }
+		var record = UserRecord{
+			ID:        u.ID,
+			Mark:      mark,
+			TypeGame:  0, // notice no yet update
+			TimeStamp: utils.GetTimeStamp(),
+		}
 
-		// message := utils.ToJSON(record)
-		// utils.PublishMessageToPS(ctx, message)
+		message := utils.ToJSON(record)
+		utils.PublishMessageToPS(ctx, message, record.TimeStamp)
 
 		utils.SleepToRandomNexMarkt()
 

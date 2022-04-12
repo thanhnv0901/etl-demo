@@ -3,6 +3,7 @@ package etl.demo.dofn;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import org.apache.beam.sdk.io.gcp.pubsub.PubsubMessage;
 import org.apache.beam.sdk.transforms.DoFn;
 import org.apache.beam.sdk.values.KV;
 import org.slf4j.Logger;
@@ -16,7 +17,8 @@ public class ParseDataFromPubSub extends DoFn<String, KV<String, UserRecord>> {
 
     @ProcessElement
     public void ProcessElement(ProcessContext c) {
-        String messages = c.element();
+        // PubsubMessage pubsubMess = c.element();
+        String messages =c.element();
 
         try {
 

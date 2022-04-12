@@ -5,14 +5,15 @@ import (
 	"encoding/json"
 	"fmt"
 	"math/rand"
+	"strconv"
 	"time"
 
 	"cloud.google.com/go/pubsub"
 )
 
 var (
-	projectID = "knorex-rtb"
-	topic     = `staging.demographics_service.user_demographics`
+	projectID = "" // notice
+	topic     = `` // notice
 
 	ctx         = context.TODO()
 	client, err = pubsub.NewClient(ctx, projectID)
@@ -33,12 +34,15 @@ func ToJSON(obj interface{}) string {
 }
 
 // PublishMessageToPS ..
-func PublishMessageToPS(ctx context.Context, data string) error {
+func PublishMessageToPS(ctx context.Context, data string, timestamp int64) error {
 
 	t := client.Topic(topic)
 
 	result := t.Publish(ctx, &pubsub.Message{
 		Data: []byte(data),
+		Attributes: map[string]string{
+			"timestamps": strconv.FormatInt(timestamp, 10),
+		},
 	})
 
 	// The Get method blocks until a server-generated ID or
@@ -53,11 +57,14 @@ func PublishMessageToPS(ctx context.Context, data string) error {
 
 // RandomMark ..
 func RandomMark() int64 {
+	rand.Seed(time.Now().UnixNano())
+
 	return int64(rand.Intn(5))
 }
 
 // RandomTypeGame ..
 func RandomTypeGame() int32 {
+	rand.Seed(time.Now().UnixNano())
 
 	var (
 		typeGames = []int32{1, 2, 3}
@@ -69,5 +76,11 @@ func RandomTypeGame() int32 {
 
 // SleepToRandomNexMarkt ..
 func SleepToRandomNexMarkt() {
+	rand.Seed(time.Now().UnixNano())
 	time.Sleep(time.Duration(int64(rand.Intn(10))) * time.Second)
+}
+
+// GetTimeStamp ..
+func GetTimeStamp() int64 {
+	return time.Now().Unix()
 }

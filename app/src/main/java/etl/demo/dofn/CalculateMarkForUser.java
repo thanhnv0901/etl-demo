@@ -14,7 +14,8 @@ import etl.demo.models.UserRecord;
 @SuppressWarnings("serial")
 public class CalculateMarkForUser extends DoFn<KV<String, Iterable<UserRecord>>, ProcessedRecord> {
 
-    // private static final Logger LOG = LoggerFactory.getLogger(CalculateMarkForUser.class);
+    // private static final Logger LOG =
+    // LoggerFactory.getLogger(CalculateMarkForUser.class);
     public InfoDatabase inforDB = null;
     public Map<String, TypeDetail> typeDetails;
 
@@ -35,6 +36,7 @@ public class CalculateMarkForUser extends DoFn<KV<String, Iterable<UserRecord>>,
         KV<String, Iterable<UserRecord>> userRecords = c.element();
 
         Integer toltalRecord = 0;
+        Long timeforMath = Calendar.getInstance().getTimeInMillis();
 
         for (UserRecord ur : userRecords.getValue()) {
 
@@ -43,13 +45,17 @@ public class CalculateMarkForUser extends DoFn<KV<String, Iterable<UserRecord>>,
             // If bonous for type supported, add it
             if (typeDetail != null) {
                 toltalRecord += typeDetail.coefficient * ur.getMark();
+            }else{
+                toltalRecord += ur.getMark();
             }
+
+            timeforMath = ur.getTimeStamp();
         }
 
         processedRecord.setId(userRecords.getKey());
         processedRecord.setToltalMark(toltalRecord);
         processedRecord.setRegion(this.inforDB.getRegion(userRecords.getKey()));
-        processedRecord.setTimeStamp(Calendar.getInstance().getTimeInMillis());
+        processedRecord.setTimeStamp(timeforMath);
 
         c.output(processedRecord);
 

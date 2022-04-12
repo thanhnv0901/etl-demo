@@ -18,9 +18,9 @@ var (
 )
 
 type historyRecord struct {
-	ID       string
-	Mark     int64
-	MinuteTh int64
+	ID        string
+	Mark      int64
+	TimeStamp int64
 }
 
 // Monitor ..
@@ -43,11 +43,6 @@ func NewMonitor(ctx context.Context, users []User, numHistory int) *Monitor {
 	}
 }
 
-// // PushObject ..
-// func (m *Monitor) PushObject(users []User) {
-// 	m.users = users
-// }
-
 // Illustrate ..
 func (m *Monitor) Illustrate(ctx context.Context) {
 
@@ -68,19 +63,23 @@ func (m *Monitor) MinuteTicker() {
 
 				userID := ""
 				var mark int64 = 0
-
 				for i := 0; i < len(m.users); i++ {
 					current := m.users[i].GetCurrentMark()
 					if current > mark {
 						userID = m.users[i].ID
 						mark = current
 					}
+
+					m.users[i].ResetMark()
+
 				}
 
+				// minus because this statemt was late some second compare when start updating
+				tmp := n.Add(-time.Second * 1)
 				m.updateHistory(historyRecord{
-					ID:       userID,
-					Mark:     mark,
-					MinuteTh: atomic.LoadInt64(countMinute),
+					ID:        userID,
+					Mark:      mark,
+					TimeStamp: tmp.Unix(),
 				})
 
 			}
@@ -124,7 +123,17 @@ func (m *Monitor) Run() {
 
 		fmt.Fprintf(bufWriter, "List history of winners in %d matches recently:\n", m.numHistory)
 		for _, his := range currentHistory {
-			fmt.Fprintf(bufWriter, "In minute: %d, UserID: %s, with record :%d\n", his.MinuteTh, his.ID, his.Mark)
+
+			dateString := ""
+			if his.TimeStamp != 0 {
+
+				tDate := time.Unix(his.TimeStamp, 0)
+				dateString = tDate.Format("2006-01-02-15:04")
+			} else {
+				dateString = "N/A"
+			}
+
+			fmt.Fprintf(bufWriter, "At time: %s, UserID: %s win with largest record :%d\n", dateString, his.ID, his.Mark)
 		}
 		fmt.Fprint(bufWriter, "Tracking live time:\n")
 
