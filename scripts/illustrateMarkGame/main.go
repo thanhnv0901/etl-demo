@@ -7,8 +7,6 @@ import (
 
 func main() {
 
-	
-
 	var (
 		ctx     = context.Background()
 		monitor *models.Monitor
